@@ -96,6 +96,25 @@ NEUE DATEIEN:
 - app/habit/edit/[id].tsx
 
 ================================================================================
+SESSION: 2025-12-05 - Loading State Verification
+================================================================================
+
+STATUS: ui-006 verifiziert, 20 Features (49%)
+
+DURCHGEFÜHRTE ARBEITEN:
+- [x] Loading.tsx Komponente analysiert
+- [x] isHydrated State im Store überprüft
+- [x] HomeScreen Loading-Check verifiziert (Zeilen 19-25)
+- [x] E2E Test erfolgreich durchgeführt
+- [x] features.json aktualisiert
+
+TECHNISCHE DETAILS:
+- Loading Komponente: src/components/ui/Loading.tsx
+- Hydration State: isHydrated in habitStore.ts:14,50
+- Loading Check: app/(tabs)/index.tsx:19-25
+- Zeigt "Loading your habits..." während Hydration
+
+================================================================================
 ANLEITUNG FÜR NEUE SESSIONS
 ================================================================================
 

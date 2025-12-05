@@ -199,7 +199,7 @@
           "name": "Loading State",
           "description": "Ladeindikator während Hydration",
           "priority": 2,
-          "passes": false
+          "passes": true
         }
       ]
     },
@@ -334,12 +334,253 @@
           "passes": false
         }
       ]
+    },
+    "calendar": {
+      "name": "Kalender & Historie",
+      "features": [
+        {
+          "id": "cal-001",
+          "name": "Kalenderansicht",
+          "description": "Monatskalender zeigt erledigte/verpasste Tage",
+          "priority": 2,
+          "passes": false
+        },
+        {
+          "id": "cal-002",
+          "name": "Wochenübersicht",
+          "description": "Kompakte 7-Tage-Ansicht pro Habit",
+          "priority": 2,
+          "passes": false
+        },
+        {
+          "id": "cal-003",
+          "name": "Vergangene Tage bearbeiten",
+          "description": "Habits für vergangene Tage nachtragen",
+          "priority": 3,
+          "passes": false
+        },
+        {
+          "id": "cal-004",
+          "name": "Heatmap-Visualisierung",
+          "description": "GitHub-Style Heatmap für Habit-Aktivität",
+          "priority": 3,
+          "passes": false
+        }
+      ]
+    },
+    "habitCategories": {
+      "name": "Habit-Kategorien",
+      "features": [
+        {
+          "id": "hcat-001",
+          "name": "Kategorien erstellen",
+          "description": "Eigene Kategorien (Gesundheit, Sport, etc.) anlegen",
+          "priority": 3,
+          "passes": false
+        },
+        {
+          "id": "hcat-002",
+          "name": "Habit Kategorie zuweisen",
+          "description": "Habits einer Kategorie zuordnen",
+          "priority": 3,
+          "passes": false
+        },
+        {
+          "id": "hcat-003",
+          "name": "Nach Kategorie filtern",
+          "description": "Habit-Liste nach Kategorie filtern",
+          "priority": 3,
+          "passes": false
+        }
+      ]
+    },
+    "theming": {
+      "name": "Theming & Darstellung",
+      "features": [
+        {
+          "id": "theme-001",
+          "name": "Dark Mode",
+          "description": "Dunkles Theme umschaltbar",
+          "priority": 2,
+          "passes": false
+        },
+        {
+          "id": "theme-002",
+          "name": "System-Theme folgen",
+          "description": "Automatisch System Light/Dark Mode übernehmen",
+          "priority": 3,
+          "passes": false
+        },
+        {
+          "id": "theme-003",
+          "name": "Akzentfarbe wählbar",
+          "description": "Primärfarbe der App anpassbar",
+          "priority": 3,
+          "passes": false
+        }
+      ]
+    },
+    "organization": {
+      "name": "Organisation & Sortierung",
+      "features": [
+        {
+          "id": "org-001",
+          "name": "Habit-Reihenfolge ändern",
+          "description": "Drag & Drop zum Sortieren der Habits",
+          "priority": 2,
+          "passes": false
+        },
+        {
+          "id": "org-002",
+          "name": "Sortierung nach Streak",
+          "description": "Habits nach Streak-Länge sortieren",
+          "priority": 3,
+          "passes": false
+        },
+        {
+          "id": "org-003",
+          "name": "Sortierung nach Completion",
+          "description": "Unerledigte Habits zuerst anzeigen",
+          "priority": 3,
+          "passes": false
+        }
+      ]
+    },
+    "templates": {
+      "name": "Habit-Vorlagen",
+      "features": [
+        {
+          "id": "tpl-001",
+          "name": "Vordefinierte Templates",
+          "description": "Beliebte Habits als Vorlage (Sport, Meditation, etc.)",
+          "priority": 3,
+          "passes": false
+        },
+        {
+          "id": "tpl-002",
+          "name": "Template auswählen",
+          "description": "Bei Habit-Erstellung aus Template wählen",
+          "priority": 3,
+          "passes": false
+        },
+        {
+          "id": "tpl-003",
+          "name": "Eigene Templates speichern",
+          "description": "Habit als eigenes Template speichern",
+          "priority": 3,
+          "passes": false
+        }
+      ]
+    },
+    "onboarding": {
+      "name": "Onboarding",
+      "features": [
+        {
+          "id": "onb-001",
+          "name": "Willkommens-Screen",
+          "description": "Intro-Bildschirme beim ersten Start",
+          "priority": 2,
+          "passes": false
+        },
+        {
+          "id": "onb-002",
+          "name": "Feature-Tour",
+          "description": "Interaktive Einführung in die Hauptfunktionen",
+          "priority": 3,
+          "passes": false
+        },
+        {
+          "id": "onb-003",
+          "name": "Erster Habit Assistent",
+          "description": "Geführte Erstellung des ersten Habits",
+          "priority": 3,
+          "passes": false
+        }
+      ]
+    },
+    "social": {
+      "name": "Soziale Features",
+      "features": [
+        {
+          "id": "soc-001",
+          "name": "Fortschritt teilen",
+          "description": "Streak/Achievement als Bild teilen",
+          "priority": 3,
+          "passes": false
+        },
+        {
+          "id": "soc-002",
+          "name": "Accountability Partner",
+          "description": "Freund als Partner einladen",
+          "priority": 3,
+          "passes": false
+        }
+      ]
+    },
+    "analytics": {
+      "name": "Statistiken & Analysen",
+      "features": [
+        {
+          "id": "ana-001",
+          "name": "Erfolgsquote berechnen",
+          "description": "Prozentuale Completion-Rate pro Habit",
+          "priority": 2,
+          "passes": false
+        },
+        {
+          "id": "ana-002",
+          "name": "Wochentag-Analyse",
+          "description": "An welchen Tagen sind Habits am erfolgreichsten",
+          "priority": 3,
+          "passes": false
+        },
+        {
+          "id": "ana-003",
+          "name": "Trend-Visualisierung",
+          "description": "Grafische Darstellung der Fortschritte über Zeit",
+          "priority": 3,
+          "passes": false
+        },
+        {
+          "id": "ana-004",
+          "name": "Monatsreport",
+          "description": "Zusammenfassung der Monatsleistung",
+          "priority": 3,
+          "passes": false
+        }
+      ]
+    },
+    "accessibility": {
+      "name": "Barrierefreiheit",
+      "features": [
+        {
+          "id": "a11y-001",
+          "name": "Screenreader-Support",
+          "description": "Korrekte Labels für VoiceOver/TalkBack",
+          "priority": 2,
+          "passes": false
+        },
+        {
+          "id": "a11y-002",
+          "name": "Schriftgröße anpassbar",
+          "description": "Text-Skalierung unterstützen",
+          "priority": 3,
+          "passes": false
+        },
+        {
+          "id": "a11y-003",
+          "name": "Hoher Kontrast",
+          "description": "High-Contrast Modus für bessere Lesbarkeit",
+          "priority": 3,
+          "passes": false
+        }
+      ]
     }
   },
   "summary": {
-    "total": 41,
-    "passing": 19,
-    "failing": 22,
-    "percentComplete": 46
+    "total": 72,
+    "passing": 20,
+    "failing": 52,
+    "percentComplete": 28
   }
 }
