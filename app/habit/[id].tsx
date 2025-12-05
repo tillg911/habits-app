@@ -1,8 +1,9 @@
-import { View, Text, ScrollView, Alert, StyleSheet } from 'react-native';
+import { useState } from 'react';
+import { View, Text, ScrollView, StyleSheet } from 'react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { format, subDays } from 'date-fns';
-import { Card, Button, ProgressRing } from '../../src/components/ui';
+import { Card, Button, ProgressRing, ConfirmDialog } from '../../src/components/ui';
 import { useHabitStore } from '../../src/store';
 import { getTodayString, formatDateString } from '../../src/utils/date';
 import { colors } from '../../src/constants/colors';
@@ -10,6 +11,7 @@ import { colors } from '../../src/constants/colors';
 export default function HabitDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const router = useRouter();
+  const [showDeleteDialog, setShowDeleteDialog] = useState(false);
 
   const habit = useHabitStore((state) => state.habits.find((h) => h.id === id));
   const completions = useHabitStore((state) =>
@@ -51,21 +53,13 @@ export default function HabitDetailScreen() {
   });
 
   const handleDelete = () => {
-    Alert.alert(
-      'Delete Habit',
-      `Are you sure you want to delete "${habit.name}"? This action cannot be undone.`,
-      [
-        { text: 'Cancel', style: 'cancel' },
-        {
-          text: 'Delete',
-          style: 'destructive',
-          onPress: () => {
-            deleteHabit(id!);
-            router.back();
-          },
-        },
-      ]
-    );
+    setShowDeleteDialog(true);
+  };
+
+  const confirmDelete = () => {
+    deleteHabit(id!);
+    setShowDeleteDialog(false);
+    router.back();
   };
 
   return (
@@ -178,6 +172,17 @@ export default function HabitDetailScreen() {
           </View>
         </View>
       </ScrollView>
+
+      <ConfirmDialog
+        visible={showDeleteDialog}
+        title="Delete Habit"
+        message={`Are you sure you want to delete "${habit.name}"? This action cannot be undone.`}
+        confirmLabel="Delete"
+        cancelLabel="Cancel"
+        onConfirm={confirmDelete}
+        onCancel={() => setShowDeleteDialog(false)}
+        destructive
+      />
     </SafeAreaView>
   );
 }

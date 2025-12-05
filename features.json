@@ -44,7 +44,7 @@
           "name": "Habit erstellen",
           "description": "Neuer Habit kann mit Name, Icon, Farbe erstellt werden",
           "priority": 1,
-          "passes": false
+          "passes": true
         },
         {
           "id": "habit-002",
@@ -58,7 +58,7 @@
           "name": "Habit löschen",
           "description": "Habit kann gelöscht werden mit Bestätigungsdialog",
           "priority": 2,
-          "passes": false
+          "passes": true
         },
         {
           "id": "habit-004",
@@ -72,14 +72,14 @@
           "name": "Habit-Completion toggeln",
           "description": "Habit kann für heute als erledigt markiert werden",
           "priority": 1,
-          "passes": false
+          "passes": true
         },
         {
           "id": "habit-006",
           "name": "Habit-Details anzeigen",
           "description": "Detailseite für einzelnen Habit mit Historie",
           "priority": 2,
-          "passes": false
+          "passes": true
         }
       ]
     },
@@ -91,14 +91,14 @@
           "name": "Aktueller Streak berechnet",
           "description": "Korrekter Current Streak wird angezeigt",
           "priority": 1,
-          "passes": false
+          "passes": true
         },
         {
           "id": "streak-002",
           "name": "Bester Streak gespeichert",
           "description": "Best Streak wird korrekt aktualisiert",
           "priority": 2,
-          "passes": false
+          "passes": true
         },
         {
           "id": "streak-003",
@@ -164,35 +164,35 @@
           "name": "HabitCard Komponente",
           "description": "Habit-Karte mit Checkbox, Name, Streak",
           "priority": 1,
-          "passes": false
+          "passes": true
         },
         {
           "id": "ui-002",
           "name": "HabitList Komponente",
           "description": "Scrollbare Liste aller aktiven Habits",
           "priority": 1,
-          "passes": false
+          "passes": true
         },
         {
           "id": "ui-003",
           "name": "AddHabitButton",
           "description": "FAB oder Button zum Hinzufügen neuer Habits",
           "priority": 1,
-          "passes": false
+          "passes": true
         },
         {
           "id": "ui-004",
           "name": "ProgressRing",
           "description": "Fortschrittsring für Tagesübersicht",
           "priority": 2,
-          "passes": false
+          "passes": true
         },
         {
           "id": "ui-005",
           "name": "Empty State",
           "description": "Anzeige wenn keine Habits existieren",
           "priority": 2,
-          "passes": false
+          "passes": true
         },
         {
           "id": "ui-006",
@@ -211,28 +211,28 @@
           "name": "Habit-Erstellungsformular",
           "description": "Modal/Screen zum Erstellen neuer Habits",
           "priority": 1,
-          "passes": false
+          "passes": true
         },
         {
           "id": "form-002",
           "name": "Icon-Picker",
           "description": "Emoji-Auswahl für Habit-Icon",
           "priority": 2,
-          "passes": false
+          "passes": true
         },
         {
           "id": "form-003",
           "name": "Farb-Picker",
           "description": "Farbauswahl für Habit",
           "priority": 2,
-          "passes": false
+          "passes": true
         },
         {
           "id": "form-004",
           "name": "Frequenz-Auswahl",
           "description": "Daily/Weekly/Custom Frequenz wählbar",
           "priority": 2,
-          "passes": false
+          "passes": true
         },
         {
           "id": "form-005",
@@ -338,8 +338,8 @@
   },
   "summary": {
     "total": 41,
-    "passing": 3,
-    "failing": 38,
-    "percentComplete": 7
+    "passing": 18,
+    "failing": 23,
+    "percentComplete": 44
   }
 }

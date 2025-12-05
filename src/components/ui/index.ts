@@ -5,3 +5,4 @@ export { Checkbox } from './Checkbox';
 export { ProgressRing } from './ProgressRing';
 export { Loading } from './Loading';
 export { EmptyState } from './EmptyState';
+export { ConfirmDialog } from './ConfirmDialog';

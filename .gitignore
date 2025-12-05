@@ -3,6 +3,9 @@
 # dependencies
 node_modules/
 
+# Claude
+.claude
+
 # Expo
 .expo/
 dist/
@@ -39,3 +42,7 @@ yarn-error.*
 # generated native folders
 /ios
 /android
+
+# Test files
+*.png
+test_*.py

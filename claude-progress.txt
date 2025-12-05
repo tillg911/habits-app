@@ -45,6 +45,41 @@ NÄCHSTE PRIORITÄTEN:
 3. Achievements-Logik implementieren
 
 ================================================================================
+SESSION: 2025-12-05 - E2E Testing & Bug Fix
+================================================================================
+
+STATUS: Delete Habit Bug gefixt, 18 Features verifiziert (44%)
+
+DURCHGEFÜHRTE ARBEITEN:
+- [x] Playwright E2E Testing Framework eingerichtet
+- [x] Web-Version der App getestet (npx expo start --web)
+- [x] Bug gefunden: Alert.alert funktioniert nicht auf Web
+- [x] ConfirmDialog Komponente erstellt (plattformübergreifend)
+- [x] Habit Detail Screen aktualisiert mit ConfirmDialog
+- [x] E2E Tests für Create/Delete Habit erfolgreich
+
+GETESTETE FEATURES:
+- habit-001: Habit erstellen ✓
+- habit-003: Habit löschen (mit neuem ConfirmDialog) ✓
+- habit-005: Habit-Completion toggeln ✓
+- habit-006: Habit-Details anzeigen ✓
+- streak-001, streak-002: Streak-Anzeige ✓
+- ui-001 bis ui-005: UI-Komponenten ✓
+- form-001 bis form-004: Formular-Features ✓
+
+NEUE DATEIEN:
+- src/components/ui/ConfirmDialog.tsx
+
+BEKANNTE PROBLEME:
+- Keine kritischen Bugs bekannt
+
+NÄCHSTE PRIORITÄTEN:
+1. habit-002: Habit bearbeiten implementieren
+2. ui-006: Loading State verifizieren
+3. form-005: Formular-Validierung testen
+4. Achievements-System implementieren
+
+================================================================================
 ANLEITUNG FÜR NEUE SESSIONS
 ================================================================================
 
