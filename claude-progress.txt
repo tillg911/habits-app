@@ -74,10 +74,26 @@ BEKANNTE PROBLEME:
 - Keine kritischen Bugs bekannt
 
 NÄCHSTE PRIORITÄTEN:
-1. habit-002: Habit bearbeiten implementieren
-2. ui-006: Loading State verifizieren
-3. form-005: Formular-Validierung testen
-4. Achievements-System implementieren
+1. ui-006: Loading State verifizieren
+2. form-005: Formular-Validierung testen
+3. Achievements-System implementieren
+4. habit-004: Habit archivieren
+
+================================================================================
+SESSION: 2025-12-05 - Habit Edit Feature
+================================================================================
+
+STATUS: habit-002 implementiert, 19 Features (46%)
+
+DURCHGEFÜHRTE ARBEITEN:
+- [x] Edit-Screen erstellt (app/habit/edit/[id].tsx)
+- [x] Edit-Button zur Detail-Seite hinzugefügt
+- [x] Formular lädt existierende Habit-Daten
+- [x] updateHabit Funktion im Store verwendet
+- [x] E2E Test erfolgreich
+
+NEUE DATEIEN:
+- app/habit/edit/[id].tsx
 
 ================================================================================
 ANLEITUNG FÜR NEUE SESSIONS

@@ -51,7 +51,7 @@
           "name": "Habit bearbeiten",
           "description": "Existierender Habit kann bearbeitet werden",
           "priority": 2,
-          "passes": false
+          "passes": true
         },
         {
           "id": "habit-003",
@@ -338,8 +338,8 @@
   },
   "summary": {
     "total": 41,
-    "passing": 18,
-    "failing": 23,
-    "percentComplete": 44
+    "passing": 19,
+    "failing": 22,
+    "percentComplete": 46
   }
 }

@@ -168,6 +168,12 @@ export default function HabitDetailScreen() {
 
           {/* Actions */}
           <View style={styles.actions}>
+            <Button
+              title="Edit Habit"
+              variant="secondary"
+              onPress={() => router.push(`/habit/edit/${id}`)}
+            />
+            <View style={styles.actionSpacer} />
             <Button title="Delete Habit" variant="danger" onPress={handleDelete} />
           </View>
         </View>
@@ -333,5 +339,8 @@ const styles = StyleSheet.create({
   },
   actions: {
     marginTop: 16,
+  },
+  actionSpacer: {
+    height: 12,
   },
 });
