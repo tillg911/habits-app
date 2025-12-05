@@ -1,16 +1,22 @@
 import { useState } from 'react';
-import { View, Text, ScrollView, TouchableOpacity, Alert, StyleSheet } from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity, StyleSheet } from 'react-native';
 import { useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Input, Button } from '../../src/components/ui';
 import { useHabitStore } from '../../src/store';
 import { HabitFrequency } from '../../src/types';
 import { colors } from '../../src/constants/colors';
-import { validateHabitForm, sanitizeText } from '../../src/utils/validation';
+import { validateHabitName, validateHabitDescription, sanitizeText } from '../../src/utils/validation';
 
 const ICONS = ['💪', '🏃', '📚', '💧', '🧘', '😴', '🍎', '💊', '✍️', '🎵', '🧹', '💰'];
 const COLORS = ['#ef4444', '#f97316', '#eab308', '#22c55e', '#14b8a6', '#0ea5e9', '#8b5cf6', '#ec4899'];
 const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+interface FormErrors {
+  name?: string;
+  description?: string;
+  targetDays?: string;
+}
 
 export default function NewHabitScreen() {
   const router = useRouter();
@@ -23,17 +29,45 @@ export default function NewHabitScreen() {
   const [frequency, setFrequency] = useState<HabitFrequency>('daily');
   const [targetDays, setTargetDays] = useState<number[]>([0, 1, 2, 3, 4, 5, 6]);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errors, setErrors] = useState<FormErrors>({});
+
+  const validateForm = (): boolean => {
+    const newErrors: FormErrors = {};
+
+    const nameValidation = validateHabitName(name);
+    if (!nameValidation.isValid) {
+      newErrors.name = nameValidation.errors[0];
+    }
+
+    const descValidation = validateHabitDescription(description);
+    if (!descValidation.isValid) {
+      newErrors.description = descValidation.errors[0];
+    }
+
+    if (frequency === 'weekly' && targetDays.length === 0) {
+      newErrors.targetDays = 'Please select at least one day';
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleNameChange = (text: string) => {
+    setName(text);
+    if (errors.name) {
+      setErrors((prev) => ({ ...prev, name: undefined }));
+    }
+  };
+
+  const handleDescriptionChange = (text: string) => {
+    setDescription(text);
+    if (errors.description) {
+      setErrors((prev) => ({ ...prev, description: undefined }));
+    }
+  };
 
   const handleSubmit = () => {
-    const validation = validateHabitForm({
-      name,
-      description,
-      frequency,
-      targetDays,
-    });
-
-    if (!validation.isValid) {
-      Alert.alert('Validation Error', validation.errors.join('\n'));
+    if (!validateForm()) {
       return;
     }
 
@@ -54,7 +88,7 @@ export default function NewHabitScreen() {
       router.back();
     } catch (error) {
       setIsSubmitting(false);
-      Alert.alert('Error', 'Failed to create habit. Please try again.');
+      setErrors({ name: 'Failed to create habit. Please try again.' });
     }
   };
 
@@ -75,22 +109,24 @@ export default function NewHabitScreen() {
           <View style={styles.inputGroup}>
             <Input
               value={name}
-              onChangeText={setName}
+              onChangeText={handleNameChange}
               label="Habit Name"
               placeholder="e.g., Drink 8 glasses of water"
               maxLength={50}
+              error={errors.name}
             />
           </View>
 
           <View style={styles.inputGroup}>
             <Input
               value={description}
-              onChangeText={setDescription}
+              onChangeText={handleDescriptionChange}
               label="Description (optional)"
               placeholder="Add more details about your habit"
               multiline
               numberOfLines={3}
               maxLength={200}
+              error={errors.description}
             />
           </View>
 
@@ -162,6 +198,9 @@ export default function NewHabitScreen() {
                   </TouchableOpacity>
                 ))}
               </View>
+              {errors.targetDays && (
+                <Text style={styles.errorText}>{errors.targetDays}</Text>
+              )}
             </View>
           )}
 
@@ -302,6 +341,11 @@ const styles = StyleSheet.create({
   },
   dayTextSelected: {
     color: colors.white,
+  },
+  errorText: {
+    fontSize: 14,
+    color: colors.red[500],
+    marginTop: 8,
   },
   preview: {
     backgroundColor: colors.white,

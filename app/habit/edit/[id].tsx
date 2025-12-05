@@ -2,15 +2,21 @@ import { useState, useEffect } from 'react';
 import { View, Text, ScrollView, TouchableOpacity, StyleSheet } from 'react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Input, Button, ConfirmDialog } from '../../../src/components/ui';
+import { Input, Button } from '../../../src/components/ui';
 import { useHabitStore } from '../../../src/store';
 import { HabitFrequency } from '../../../src/types';
 import { colors } from '../../../src/constants/colors';
-import { validateHabitForm, sanitizeText } from '../../../src/utils/validation';
+import { validateHabitName, validateHabitDescription, sanitizeText } from '../../../src/utils/validation';
 
 const ICONS = ['💪', '🏃', '📚', '💧', '🧘', '😴', '🍎', '💊', '✍️', '🎵', '🧹', '💰'];
 const COLORS = ['#ef4444', '#f97316', '#eab308', '#22c55e', '#14b8a6', '#0ea5e9', '#8b5cf6', '#ec4899'];
 const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+interface FormErrors {
+  name?: string;
+  description?: string;
+  targetDays?: string;
+}
 
 export default function EditHabitScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -26,8 +32,7 @@ export default function EditHabitScreen() {
   const [frequency, setFrequency] = useState<HabitFrequency>('daily');
   const [targetDays, setTargetDays] = useState<number[]>([0, 1, 2, 3, 4, 5, 6]);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [showErrorDialog, setShowErrorDialog] = useState(false);
-  const [errorMessage, setErrorMessage] = useState('');
+  const [errors, setErrors] = useState<FormErrors>({});
 
   useEffect(() => {
     if (habit) {
@@ -48,17 +53,43 @@ export default function EditHabitScreen() {
     );
   }
 
-  const handleSubmit = () => {
-    const validation = validateHabitForm({
-      name,
-      description,
-      frequency,
-      targetDays,
-    });
+  const validateForm = (): boolean => {
+    const newErrors: FormErrors = {};
 
-    if (!validation.isValid) {
-      setErrorMessage(validation.errors.join('\n'));
-      setShowErrorDialog(true);
+    const nameValidation = validateHabitName(name);
+    if (!nameValidation.isValid) {
+      newErrors.name = nameValidation.errors[0];
+    }
+
+    const descValidation = validateHabitDescription(description);
+    if (!descValidation.isValid) {
+      newErrors.description = descValidation.errors[0];
+    }
+
+    if (frequency === 'weekly' && targetDays.length === 0) {
+      newErrors.targetDays = 'Please select at least one day';
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleNameChange = (text: string) => {
+    setName(text);
+    if (errors.name) {
+      setErrors((prev) => ({ ...prev, name: undefined }));
+    }
+  };
+
+  const handleDescriptionChange = (text: string) => {
+    setDescription(text);
+    if (errors.description) {
+      setErrors((prev) => ({ ...prev, description: undefined }));
+    }
+  };
+
+  const handleSubmit = () => {
+    if (!validateForm()) {
       return;
     }
 
@@ -77,8 +108,7 @@ export default function EditHabitScreen() {
       router.back();
     } catch (error) {
       setIsSubmitting(false);
-      setErrorMessage('Failed to update habit. Please try again.');
-      setShowErrorDialog(true);
+      setErrors({ name: 'Failed to update habit. Please try again.' });
     }
   };
 
@@ -99,22 +129,24 @@ export default function EditHabitScreen() {
           <View style={styles.inputGroup}>
             <Input
               value={name}
-              onChangeText={setName}
+              onChangeText={handleNameChange}
               label="Habit Name"
               placeholder="e.g., Drink 8 glasses of water"
               maxLength={50}
+              error={errors.name}
             />
           </View>
 
           <View style={styles.inputGroup}>
             <Input
               value={description}
-              onChangeText={setDescription}
+              onChangeText={handleDescriptionChange}
               label="Description (optional)"
               placeholder="Add more details about your habit"
               multiline
               numberOfLines={3}
               maxLength={200}
+              error={errors.description}
             />
           </View>
 
@@ -186,6 +218,9 @@ export default function EditHabitScreen() {
                   </TouchableOpacity>
                 ))}
               </View>
+              {errors.targetDays && (
+                <Text style={styles.errorText}>{errors.targetDays}</Text>
+              )}
             </View>
           )}
 
@@ -213,16 +248,6 @@ export default function EditHabitScreen() {
           disabled={!name.trim()}
         />
       </View>
-
-      <ConfirmDialog
-        visible={showErrorDialog}
-        title="Error"
-        message={errorMessage}
-        confirmLabel="OK"
-        cancelLabel="Cancel"
-        onConfirm={() => setShowErrorDialog(false)}
-        onCancel={() => setShowErrorDialog(false)}
-      />
     </SafeAreaView>
   );
 }
@@ -345,6 +370,11 @@ const styles = StyleSheet.create({
   },
   dayTextSelected: {
     color: colors.white,
+  },
+  errorText: {
+    fontSize: 14,
+    color: colors.red[500],
+    marginTop: 8,
   },
   preview: {
     backgroundColor: colors.white,

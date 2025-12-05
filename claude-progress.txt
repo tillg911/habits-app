@@ -115,6 +115,30 @@ TECHNISCHE DETAILS:
 - Zeigt "Loading your habits..." während Hydration
 
 ================================================================================
+SESSION: 2025-12-05 - Form Validation Implementation
+================================================================================
+
+STATUS: form-005 implementiert, 21 Features (29%)
+
+DURCHGEFÜHRTE ARBEITEN:
+- [x] Alert.alert durch inline Fehlermeldungen ersetzt (Web-kompatibel)
+- [x] validateForm() Funktion für lokale Validierung
+- [x] Error-State Management mit automatischem Löschen bei Eingabe
+- [x] Input-Komponente nutzt bereits error prop
+- [x] Edit-Screen ebenfalls aktualisiert
+- [x] E2E Test erfolgreich
+
+TECHNISCHE DETAILS:
+- new.tsx: Inline-Fehlermeldungen unter Formularfeldern
+- edit/[id].tsx: Gleiche Validierung wie new.tsx
+- FormErrors Interface: { name?, description?, targetDays? }
+- Validierung: min 2 Zeichen, max 50/200 Zeichen
+
+GEÄNDERTE DATEIEN:
+- app/habit/new.tsx
+- app/habit/edit/[id].tsx
+
+================================================================================
 ANLEITUNG FÜR NEUE SESSIONS
 ================================================================================
 

@@ -239,7 +239,7 @@
           "name": "Formular-Validierung",
           "description": "Name erforderlich, Fehlermeldungen angezeigt",
           "priority": 2,
-          "passes": false
+          "passes": true
         }
       ]
     },
@@ -579,8 +579,8 @@
   },
   "summary": {
     "total": 72,
-    "passing": 20,
-    "failing": 52,
-    "percentComplete": 28
+    "passing": 21,
+    "failing": 51,
+    "percentComplete": 29
   }
 }
