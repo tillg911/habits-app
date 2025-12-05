@@ -1,0 +1,345 @@
+{
+  "_meta": {
+    "description": "Feature-Liste für Minimal Habits App. WICHTIG: Tests niemals entfernen!",
+    "lastUpdated": "2025-12-05",
+    "rules": [
+      "Nur der 'passes'-Status darf geändert werden",
+      "Ein Feature pro Session bearbeiten",
+      "Feature erst als 'passes: true' markieren wenn vollständig getestet",
+      "Git commit nach jedem abgeschlossenen Feature"
+    ]
+  },
+  "categories": {
+    "core": {
+      "name": "Core Functionality",
+      "features": [
+        {
+          "id": "core-001",
+          "name": "App startet ohne Fehler",
+          "description": "Expo-App lädt und zeigt Home-Screen",
+          "priority": 1,
+          "passes": true
+        },
+        {
+          "id": "core-002",
+          "name": "Tab-Navigation funktioniert",
+          "description": "Alle 3 Tabs (Today, Achievements, Profile) sind erreichbar",
+          "priority": 1,
+          "passes": true
+        },
+        {
+          "id": "core-003",
+          "name": "State-Persistenz",
+          "description": "Habits bleiben nach App-Neustart erhalten",
+          "priority": 1,
+          "passes": true
+        }
+      ]
+    },
+    "habits": {
+      "name": "Habit Management",
+      "features": [
+        {
+          "id": "habit-001",
+          "name": "Habit erstellen",
+          "description": "Neuer Habit kann mit Name, Icon, Farbe erstellt werden",
+          "priority": 1,
+          "passes": false
+        },
+        {
+          "id": "habit-002",
+          "name": "Habit bearbeiten",
+          "description": "Existierender Habit kann bearbeitet werden",
+          "priority": 2,
+          "passes": false
+        },
+        {
+          "id": "habit-003",
+          "name": "Habit löschen",
+          "description": "Habit kann gelöscht werden mit Bestätigungsdialog",
+          "priority": 2,
+          "passes": false
+        },
+        {
+          "id": "habit-004",
+          "name": "Habit archivieren",
+          "description": "Habit kann archiviert statt gelöscht werden",
+          "priority": 3,
+          "passes": false
+        },
+        {
+          "id": "habit-005",
+          "name": "Habit-Completion toggeln",
+          "description": "Habit kann für heute als erledigt markiert werden",
+          "priority": 1,
+          "passes": false
+        },
+        {
+          "id": "habit-006",
+          "name": "Habit-Details anzeigen",
+          "description": "Detailseite für einzelnen Habit mit Historie",
+          "priority": 2,
+          "passes": false
+        }
+      ]
+    },
+    "streaks": {
+      "name": "Streak System",
+      "features": [
+        {
+          "id": "streak-001",
+          "name": "Aktueller Streak berechnet",
+          "description": "Korrekter Current Streak wird angezeigt",
+          "priority": 1,
+          "passes": false
+        },
+        {
+          "id": "streak-002",
+          "name": "Bester Streak gespeichert",
+          "description": "Best Streak wird korrekt aktualisiert",
+          "priority": 2,
+          "passes": false
+        },
+        {
+          "id": "streak-003",
+          "name": "Streak-Reset bei verpasstem Tag",
+          "description": "Streak wird auf 0 gesetzt wenn Tag verpasst",
+          "priority": 2,
+          "passes": false
+        }
+      ]
+    },
+    "achievements": {
+      "name": "Achievements System",
+      "features": [
+        {
+          "id": "ach-001",
+          "name": "Achievement-Liste anzeigen",
+          "description": "Alle verfügbaren Achievements werden angezeigt",
+          "priority": 2,
+          "passes": false
+        },
+        {
+          "id": "ach-002",
+          "name": "Achievement freischalten",
+          "description": "Achievements werden bei Erfüllung freigeschaltet",
+          "priority": 2,
+          "passes": false
+        },
+        {
+          "id": "ach-003",
+          "name": "Achievement-Benachrichtigung",
+          "description": "Popup/Toast bei neuem Achievement",
+          "priority": 3,
+          "passes": false
+        },
+        {
+          "id": "ach-004",
+          "name": "Erster Habit Achievement",
+          "description": "Achievement für ersten erstellten Habit",
+          "priority": 2,
+          "passes": false
+        },
+        {
+          "id": "ach-005",
+          "name": "7-Tage-Streak Achievement",
+          "description": "Achievement für 7 Tage Streak",
+          "priority": 2,
+          "passes": false
+        },
+        {
+          "id": "ach-006",
+          "name": "30-Tage-Streak Achievement",
+          "description": "Achievement für 30 Tage Streak",
+          "priority": 2,
+          "passes": false
+        }
+      ]
+    },
+    "ui": {
+      "name": "UI Components",
+      "features": [
+        {
+          "id": "ui-001",
+          "name": "HabitCard Komponente",
+          "description": "Habit-Karte mit Checkbox, Name, Streak",
+          "priority": 1,
+          "passes": false
+        },
+        {
+          "id": "ui-002",
+          "name": "HabitList Komponente",
+          "description": "Scrollbare Liste aller aktiven Habits",
+          "priority": 1,
+          "passes": false
+        },
+        {
+          "id": "ui-003",
+          "name": "AddHabitButton",
+          "description": "FAB oder Button zum Hinzufügen neuer Habits",
+          "priority": 1,
+          "passes": false
+        },
+        {
+          "id": "ui-004",
+          "name": "ProgressRing",
+          "description": "Fortschrittsring für Tagesübersicht",
+          "priority": 2,
+          "passes": false
+        },
+        {
+          "id": "ui-005",
+          "name": "Empty State",
+          "description": "Anzeige wenn keine Habits existieren",
+          "priority": 2,
+          "passes": false
+        },
+        {
+          "id": "ui-006",
+          "name": "Loading State",
+          "description": "Ladeindikator während Hydration",
+          "priority": 2,
+          "passes": false
+        }
+      ]
+    },
+    "forms": {
+      "name": "Forms & Input",
+      "features": [
+        {
+          "id": "form-001",
+          "name": "Habit-Erstellungsformular",
+          "description": "Modal/Screen zum Erstellen neuer Habits",
+          "priority": 1,
+          "passes": false
+        },
+        {
+          "id": "form-002",
+          "name": "Icon-Picker",
+          "description": "Emoji-Auswahl für Habit-Icon",
+          "priority": 2,
+          "passes": false
+        },
+        {
+          "id": "form-003",
+          "name": "Farb-Picker",
+          "description": "Farbauswahl für Habit",
+          "priority": 2,
+          "passes": false
+        },
+        {
+          "id": "form-004",
+          "name": "Frequenz-Auswahl",
+          "description": "Daily/Weekly/Custom Frequenz wählbar",
+          "priority": 2,
+          "passes": false
+        },
+        {
+          "id": "form-005",
+          "name": "Formular-Validierung",
+          "description": "Name erforderlich, Fehlermeldungen angezeigt",
+          "priority": 2,
+          "passes": false
+        }
+      ]
+    },
+    "notifications": {
+      "name": "Notifications",
+      "features": [
+        {
+          "id": "notif-001",
+          "name": "Erinnerung hinzufügen",
+          "description": "Reminder für Habit konfigurierbar",
+          "priority": 3,
+          "passes": false
+        },
+        {
+          "id": "notif-002",
+          "name": "Push-Notification senden",
+          "description": "Native Notification zur eingestellten Zeit",
+          "priority": 3,
+          "passes": false
+        },
+        {
+          "id": "notif-003",
+          "name": "Notification-Permission",
+          "description": "Benutzer wird nach Permission gefragt",
+          "priority": 3,
+          "passes": false
+        }
+      ]
+    },
+    "profile": {
+      "name": "Profile & Settings",
+      "features": [
+        {
+          "id": "prof-001",
+          "name": "Statistiken anzeigen",
+          "description": "Gesamtstatistiken (Total Habits, Completions)",
+          "priority": 2,
+          "passes": false
+        },
+        {
+          "id": "prof-002",
+          "name": "Archivierte Habits anzeigen",
+          "description": "Liste der archivierten Habits",
+          "priority": 3,
+          "passes": false
+        },
+        {
+          "id": "prof-003",
+          "name": "Daten exportieren",
+          "description": "Habits als JSON exportieren",
+          "priority": 3,
+          "passes": false
+        },
+        {
+          "id": "prof-004",
+          "name": "Daten importieren",
+          "description": "Habits aus JSON importieren",
+          "priority": 3,
+          "passes": false
+        }
+      ]
+    },
+    "testing": {
+      "name": "Testing",
+      "features": [
+        {
+          "id": "test-001",
+          "name": "Jest konfiguriert",
+          "description": "Jest Test-Runner funktioniert",
+          "priority": 2,
+          "passes": false
+        },
+        {
+          "id": "test-002",
+          "name": "Store Unit Tests",
+          "description": "Tests für habitStore",
+          "priority": 2,
+          "passes": false
+        },
+        {
+          "id": "test-003",
+          "name": "Streak Utility Tests",
+          "description": "Tests für Streak-Berechnung",
+          "priority": 2,
+          "passes": false
+        },
+        {
+          "id": "test-004",
+          "name": "Component Tests",
+          "description": "Tests für UI-Komponenten",
+          "priority": 3,
+          "passes": false
+        }
+      ]
+    }
+  },
+  "summary": {
+    "total": 41,
+    "passing": 3,
+    "failing": 38,
+    "percentComplete": 7
+  }
+}
